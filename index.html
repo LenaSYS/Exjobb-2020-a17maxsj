@@ -15,7 +15,15 @@
 </head>
 <body>
     <h1>Börje Lundins databank</h1>
-    <div id="deathtoll">Antal dödsfall i skaraborg pga mentala rubbningar: </div>
+
+    <select id="lanSelect" onchange="init()">
+            <option value="16">Skaraborg</option>
+            <option value="17">Värmland</option>
+            <option value="18">Örebro</option>
+          </select>
+
+
+    <div id="deathtoll">Antal dödsfall i <span id=region> </span> pga mentala rubbningar <span id =year> </span>: <span id=deathtollValue> </div></div> 
 
 
 </body>

@@ -1,6 +1,10 @@
 window.onload = init;
 function init() {
 
+
+    var e = document.getElementById("lanSelect");
+    var strUser = e.options[e.selectedIndex].value;
+    console.log("starting");
 var jsonObj = 
 {
   "query": [
@@ -9,7 +13,7 @@ var jsonObj =
       "selection": {
         "filter": "vs:RegionLän",
         "values": [
-          "16"
+          strUser
         ]
       }
     },
@@ -65,7 +69,15 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HS/HS0301/DodaOrsak",
            $.each(obj.data, function(index,data) {	   
             
                var content = data.values;
-                $("#deathtoll").append(content);
+            
+               var rt = document.getElementById("lanSelect");
+               var regiontext = rt.options[e.selectedIndex].text;
+
+               document.getElementById('region').innerText = regiontext;
+               document.getElementById('year').innerText = data.key[4];
+               document.getElementById('deathtollValue').innerText = content;
+
+
 
                }
            
