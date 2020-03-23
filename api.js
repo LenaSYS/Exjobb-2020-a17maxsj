@@ -87,5 +87,21 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HS/HS0301/DodaOrsak",
    }
  
  }); 
+
  
+ var map = new ol.Map({
+   
+  target: 'map',
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.OSM()
+    })
+  ],
+  
+  view: new ol.View({
+    center: ol.proj.fromLonLat([58.38, 13.4]),
+    zoom: 1
+  })
+});
+
 }

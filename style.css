@@ -8,3 +8,9 @@ html {
 
 h1 {
 }
+
+
+.map {
+    height: 600px;
+    width: 100%;
+  }
