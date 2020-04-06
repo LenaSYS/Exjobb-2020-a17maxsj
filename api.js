@@ -89,20 +89,51 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HS/HS0301/DodaOrsak",
  }); 
 
  
- var map = new ol.Map({
-  target: 'map',
-  layers: [
-    new ol.layer.Tile({
-      source: new ol.source.OSM()
-    })
-  ],
-  
-  view: new ol.View({
-    center: ol.proj.fromLonLat([58.38, 13.4]),
-    zoom: 1
-    
-  })
+ google.charts.load('current', {
+  'packages':['geochart'],
+  // Note: you will need to get a mapsApiKey for your project.
+  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+  'mapsApiKey': 'AIzaSyCnupE504WA4tSqgvgOZGvWAe_uEDRB6WI'
 });
+google.setOnLoadCallback(drawRegionsMap);
 
+function drawRegionsMap() {
+
+    var data = google.visualization.arrayToDataTable([
+        ['Region'],
+        ['Stockholm'],
+        ['Uppsala'],
+        ['Södermanland'],
+        ['Östergötland'],
+        ['Jönköping'],
+        ['Kronoberg'],
+        ['Kalmar'],
+        ['Gotland'],
+        ['Blekinge'],
+        ['Skåne'],
+        ['Halland'],
+        ['Västra Götaland'],
+        ['Värmland'],
+        ['Örebro'],
+        ['Västmanland'],
+        ['Dalarna'],
+        ['Gävleborg'],
+        ['Västernorrland'],
+        ['Jämtland'],
+        ['Västerbotten'],
+        ['Norrbotten']
+    ]);
+
+    var options = {
+        region: 'SE',
+        resolution: 'provinces' ,
+        backgroundColor: '#393b41',
+
+    };
+
+    var chart = new google.visualization.GeoChart(document.getElementById('se-county-map'));
+
+    chart.draw(data, options);
+}
 threejs();
 }
