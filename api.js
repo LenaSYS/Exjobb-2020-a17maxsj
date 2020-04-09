@@ -11,27 +11,29 @@ var jsonObj =
     {
       "code": "Region",
       "selection": {
-        "filter": "vs:RegionLän",
+        "filter": "vs:RegionLän99EjAggr",
         "values": [
-          strUser
-        ]
-      }
-    },
-    {
-      "code": "Dodsorsak",
-      "selection": {
-        "filter": "agg:DödsorsakKapitel",
-        "values": [
-          "20-21"
-        ]
-      }
-    },
-    {
-      "code": "Alder",
-      "selection": {
-        "filter": "vs:Ålder5årA",
-        "values": [
-          "75-79"
+          "01",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "12",
+          "13",
+          "14",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25"
         ]
       }
     },
@@ -40,7 +42,7 @@ var jsonObj =
       "selection": {
         "filter": "item",
         "values": [
-          "1"
+          "1+2"
         ]
       }
     },
@@ -49,7 +51,7 @@ var jsonObj =
       "selection": {
         "filter": "item",
         "values": [
-          "1981"
+          "2019"
         ]
       }
     }
@@ -57,10 +59,11 @@ var jsonObj =
   "response": {
     "format": "json"
   }
+
 }; 
 
 $.ajax({
-url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HS/HS0301/DodaOrsak",
+url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/BefolkningMedelAlder",
     type: "POST",
     data: JSON.stringify(jsonObj),   
     dataType: "json",
@@ -68,16 +71,14 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HS/HS0301/DodaOrsak",
        
            $.each(obj.data, function(index,data) {	   
             
-               var content = data.values;
-            
-               var rt = document.getElementById("lanSelect");
-               var regiontext = rt.options[e.selectedIndex].text;
 
-               document.getElementById('region').innerText = regiontext;
-               document.getElementById('year').innerText = data.key[4];
-               document.getElementById('deathtollValue').innerText = content;
+              console.log(data.key[0]);
+              console.log(data.key[1]);
+              console.log(data.key[2]);
+              console.log(data.values);
 
-
+              document.getElementById("test").innerHTML +=  
+             "<p>Län: " + data.key[0] + " År: " + data.key[2] + " Medelålder: " + data.values + "</p>";
 
                }
            
@@ -89,51 +90,7 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HS/HS0301/DodaOrsak",
  }); 
 
  
- google.charts.load('current', {
-  'packages':['geochart'],
-  // Note: you will need to get a mapsApiKey for your project.
-  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-  'mapsApiKey': 'AIzaSyCnupE504WA4tSqgvgOZGvWAe_uEDRB6WI'
-});
-google.setOnLoadCallback(drawRegionsMap);
-
-function drawRegionsMap() {
-
-    var data = google.visualization.arrayToDataTable([
-        ['Region'],
-        ['Stockholm'],
-        ['Uppsala'],
-        ['Södermanland'],
-        ['Östergötland'],
-        ['Jönköping'],
-        ['Kronoberg'],
-        ['Kalmar'],
-        ['Gotland'],
-        ['Blekinge'],
-        ['Skåne'],
-        ['Halland'],
-        ['Västra Götaland'],
-        ['Värmland'],
-        ['Örebro'],
-        ['Västmanland'],
-        ['Dalarna'],
-        ['Gävleborg'],
-        ['Västernorrland'],
-        ['Jämtland'],
-        ['Västerbotten'],
-        ['Norrbotten']
-    ]);
-
-    var options = {
-        region: 'SE',
-        resolution: 'provinces' ,
-        backgroundColor: '#393b41',
-
-    };
-
-    var chart = new google.visualization.GeoChart(document.getElementById('se-county-map'));
-
-    chart.draw(data, options);
-}
-threejs();
+ 
+/*
+threejs();*/
 }
