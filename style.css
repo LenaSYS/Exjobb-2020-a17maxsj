@@ -9,4 +9,8 @@ html {
 h1 {
 }
 
+#lanInfo {
+    width:300px;
+    float: left;
+}
 

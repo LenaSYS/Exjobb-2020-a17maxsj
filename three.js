@@ -3,8 +3,14 @@ function threejs() {
     console.log("lolman")
 
   
-    
+    var can = document.getElementById('artifactCanvas');
+var ctx = can.getContext('2d');
 
+    var img = new Image();
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+    }
+    img.src = "map.svg";
 
 
 var scene = new THREE.Scene();

@@ -77,7 +77,7 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/Befolkning
               console.log(data.key[2]);
               console.log(data.values);
 
-              document.getElementById("test").innerHTML +=  
+              document.getElementById("lanInfo").innerHTML +=  
              "<p>Län: " + data.key[0] + " År: " + data.key[2] + " Medelålder: " + data.values + "</p>";
 
                }
@@ -91,6 +91,6 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/Befolkning
 
  
  
-/*
-threejs();*/
+
+threejs();
 }
