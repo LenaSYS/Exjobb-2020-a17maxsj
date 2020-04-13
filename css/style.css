@@ -2,11 +2,23 @@ html {
     background:#393b41;
     font-family: 'Roboto', sans-serif;
     color:white;
+   
+  
 
 
 }
 
-h1 {
+h1{
+    font-size: 3em;
+    margin: 0;
+}
+h1,h2{
+    color: yellow;
+
+}
+#logo {
+    text-align: center;
+  
 }
 
 #lanInfo {

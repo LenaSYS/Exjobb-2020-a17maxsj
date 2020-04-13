@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    <script src="api.js"></script>
-    <script src="three.js"></script>
+    <script src="http://threejs.org/build/three.min.js"></script>
+<script src="http://threejs.org/examples/js/renderers/SVGRenderer.js"></script>
+<script src="http://threejs.org/examples/js/renderers/Projector.js"></script>
+<script src="http://threejs.org/examples/js/loaders/SVGLoader.js"></script>
+    <script src="script/api.js"></script>
+    <script src="threeJS/three.js"></script>  
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
@@ -18,18 +20,13 @@
     <title>Databank</title>
 </head>
 <body>
-    <h1>Börje Lundins databank</h1>
+   <div id="logo"> <h1>Börje Lundins databank</h1></div>
 
-    <select id="lanSelect" onchange="init()">
-            <option value="16">Skaraborg</option>
-            <option value="17">Värmland</option>
-            <option value="18">Örebro</option> 
-            
-          </select>
+ 
 
 <div id="main">
           <div id="lanInfo"> 
-            <h1>Län</h1> 
+            <h2>Län</h2> 
         </div> 
      
       <canvas id="artifactCanvas" width="900" height="700"></canvas>
