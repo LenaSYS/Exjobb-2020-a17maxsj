@@ -6,12 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-    <script src="http://threejs.org/build/three.min.js"></script>
-<script src="http://threejs.org/examples/js/renderers/SVGRenderer.js"></script>
-<script src="http://threejs.org/examples/js/renderers/Projector.js"></script>
-<script src="http://threejs.org/examples/js/loaders/SVGLoader.js"></script>
+    <script src="https://threejs.org/build/three.min.js"></script>
+<script src="https://threejs.org/examples/js/renderers/SVGRenderer.js"></script>
+<script src="https://threejs.org/examples/js/renderers/Projector.js"></script>
+<script src="https://threejs.org/examples/js/loaders/SVGLoader.js"></script>
+        <script src="http://d3js.org/d3.v2.js"></script>
+<link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
     <script src="script/api.js"></script>
     <script src="threeJS/three.js"></script>  
+    <script src="d3JS/d3.js"></script>  
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -28,7 +32,8 @@
           <div id="lanInfo"> 
             <h2>Län</h2> 
         </div> 
-     
+        <div id="svg-container"></div>
+
       <canvas id="artifactCanvas" width="900" height="700"></canvas>
      
      
@@ -36,7 +41,7 @@
 
     </div>
 
-         
+
   
 </body>
 </html>

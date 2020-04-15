@@ -26,3 +26,7 @@ h1,h2{
     float: left;
 }
 
+#svg-conatiner{
+    height:900px;
+    width: 900px;
+}

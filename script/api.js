@@ -63,19 +63,21 @@ var jsonObj =
 }; 
 
 $.ajax({
-url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/BefolkningMedelAlder",
+url:"https://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/BefolkningMedelAlder",
     type: "POST",
     data: JSON.stringify(jsonObj),   
     dataType: "json",
     success: function(obj){		
        
            $.each(obj.data, function(index,data) {	   
-            
+            /*
             //Testing, log values in console
               console.log(data.key[0]);
               console.log(data.key[1]);
               console.log(data.key[2]);
               console.log(data.values);
+              */
+             
             //Testing, display all values
               document.getElementById("lanInfo").innerHTML +=  
              "<p>Län: " + data.key[0] + " År: " + data.key[2] + " Medelålder: " + data.values + "</p>";
@@ -92,5 +94,5 @@ url:"http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/Befolkning
  
  
 
-threejs();
+d3js();
 }
