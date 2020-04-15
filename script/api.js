@@ -1,8 +1,9 @@
 window.onload = init;
+const list = [ ];
+
+
+
 function init() {
-
-
-    
     console.log("starting");
     //Json question
 var jsonObj = 
@@ -81,18 +82,26 @@ url:"https://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/Befolknin
             //Testing, display all values
               document.getElementById("lanInfo").innerHTML +=  
              "<p>Län: " + data.key[0] + " År: " + data.key[2] + " Medelålder: " + data.values + "</p>";
+            
+             var items = [
+              data.key[0],
+             data.key[2],
+             data.values[0]];
 
+             list.push(items);
+
+
+            
                }
-           
+               
            ); 
-       
-         
-   }
+
+          }
  
  }); 
 
- 
+
+
  
 
-d3js();
 }
