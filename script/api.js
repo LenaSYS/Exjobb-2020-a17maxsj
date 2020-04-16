@@ -2,7 +2,7 @@ window.onload = init;
 const dList = [];
 
 function init() {
-    console.log("starting");
+    console.log("Starting API collection");
     //Json question
     var jsonObj =
         /*{
@@ -135,7 +135,6 @@ function init() {
                     document.getElementById("lanInfo").innerHTML +=
                         "<p>Län: " + data.key[0] + " Datum: " + data.key[2] + " Värde: " + data.values + "</p>";
 
-                    console.log(data.key[1]);
                     // put all the values in an array
                     dList.push({ lan: data.key[0], ar: data.key[2], dValue: data.values[0] });
 
@@ -148,7 +147,6 @@ function init() {
 
     });
 
-    console.log(dList);
 
 
 

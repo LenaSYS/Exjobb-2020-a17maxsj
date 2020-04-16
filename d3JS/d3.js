@@ -1,10 +1,9 @@
 function d3js() {
 
 
-    console.log("d3");
-    console.log(dList[0]);
+    console.log("Starting D3 module");
 
-
+    //Select container
     var sampleSVG = d3.select("#svg-container")
         .append("svg")
         .attr("width", 900)
@@ -14,15 +13,16 @@ function d3js() {
         }))
         .append("g")
 
-
+    //Draw svg map of sweden
     var myimage = sampleSVG.append('image')
         .attr('xlink:href', 'img/map.svg')
         .attr('width', 900)
         .attr('height', 600);
 
+    // Select color of heatmap dot based on value
     var i;
     for (i = 0; i < dList.length; i++) {
-        console.log(i + "value: " + dList[i].dValue)
+        // console.log(i + "value: " + dList[i].dValue)
 
         if (dList[i].dValue >= 1000) {
             dColor = "#630601";
@@ -35,13 +35,13 @@ function d3js() {
             dSize = 15;
         } else if (dList[i].dValue >= 100) {
             dColor = "#F26A48";
-            dSize = 10;
+            dSize = 10 + dList[i].dValue / 30;
         } else if (dList[i].dValue >= 50) {
             dColor = "#F59373";
-            dSize = 7;
+            dSize = 7 + dList[i].dValue / 30;
         } else if (dList[i].dValue <= 50) {
             dColor = "#F8BCA2";
-            dSize = 5;
+            dSize = 5 + dList[i].dValue / 30;
 
         } else {
             console.log("color picker error");
@@ -49,7 +49,7 @@ function d3js() {
         }
 
 
-
+        //Draw dot in the right place depending on the county
         if (dList[i].lan === "01") {
             drawCircle(460, 430, dSize, "Stockholm: " + dList[i].dValue, dColor);
         } else if (dList[i].lan === "03") {
@@ -99,15 +99,12 @@ function d3js() {
 
 
     }
-    /* test draw
-    drawCircle(400, 400, 10, dList[0]);
-    drawCircle(500, 100, 5 ,dList[1]);
-    drawCircle(450, 220, 5, dList[2]);
-    */
 
+
+    // Function that draws the circles
     function drawCircle(x, y, size, tip, dotColor) {
 
-        console.log('Drawing circle at', x, y, size, dotColor);
+        // console.log('Drawing circle at', x, y, size, dotColor);
         sampleSVG.append("circle")
 
         .style("stroke", "gray")
