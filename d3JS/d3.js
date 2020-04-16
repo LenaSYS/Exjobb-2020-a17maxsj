@@ -1,7 +1,11 @@
 function d3js() {
-
-
     console.log("Starting D3 module");
+    const mmValue = [];
+    var maxRange = Math.max.apply(Math, mmValue);
+    var minRange = Math.min.apply(Math, mmValue);
+
+
+
 
     //Select container
     var sampleSVG = d3.select("#svg-container")
@@ -19,29 +23,42 @@ function d3js() {
         .attr('width', 900)
         .attr('height', 600);
 
+    //Get the smallest and biggest values
+    for (var j = 0; j < dList.length; j++) {
+        mmValue.push(dList[j].dValue);
+    }
+
+
+
     // Select color of heatmap dot based on value
-    var i;
-    for (i = 0; i < dList.length; i++) {
+    for (var i = 0; i < dList.length; i++) {
         // console.log(i + "value: " + dList[i].dValue)
+
+
+        //set the scale for each value
+        var unscaled = mmValue[i];
+        var scaled = scaleBetween(unscaled, 5, 30, minRange, maxRange);
+        console.log(scaled.toFixed(2));
+
 
         if (dList[i].dValue >= 1000) {
             dColor = "#630601";
-            dSize = 25;
+            dSize = scaled;
         } else if (dList[i].dValue >= 750) {
             dColor = "#A7120D";
-            dSize = 20;
+            dSize = scaled;
         } else if (dList[i].dValue >= 500) {
             dColor = "#DE2921";
-            dSize = 15;
+            dSize = scaled;
         } else if (dList[i].dValue >= 100) {
             dColor = "#F26A48";
-            dSize = 10 + dList[i].dValue / 30;
+            dSize = scaled;
         } else if (dList[i].dValue >= 50) {
             dColor = "#F59373";
-            dSize = 7 + dList[i].dValue / 30;
+            dSize = scaled;
         } else if (dList[i].dValue <= 50) {
             dColor = "#F8BCA2";
-            dSize = 5 + dList[i].dValue / 30;
+            dSize = scaled;
 
         } else {
             console.log("color picker error");
@@ -99,7 +116,10 @@ function d3js() {
 
 
     }
-
+    // Function to scale values for the dots
+    function scaleBetween(unscaledNum, minAllowed, maxAllowed, min, max) {
+        return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
+    }
 
     // Function that draws the circles
     function drawCircle(x, y, size, tip, dotColor) {
@@ -126,7 +146,5 @@ function d3js() {
             .style("background-color", "black")
             .text(tip);
     }
-
-
 
 }
