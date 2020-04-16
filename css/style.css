@@ -9,6 +9,10 @@ h1 {
     margin: 0;
 }
 
+#logo h2 {
+    margin: 0 auto;
+}
+
 h1,
 h2 {
     color: yellow;
@@ -16,6 +20,8 @@ h2 {
 
 #logo {
     text-align: center;
+    margin: 0 auto;
+    width: 800px;
 }
 
 #lanInfo {
