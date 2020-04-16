@@ -8,7 +8,12 @@ function d3js() {
     var sampleSVG = d3.select("#svg-container")
         .append("svg")
         .attr("width", 900)
-        .attr("height", 700);
+        .attr("height", 700)
+        .call(d3.behavior.zoom().on("zoom", function() {
+            sampleSVG.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+        }))
+        .append("g")
+
 
     var myimage = sampleSVG.append('image')
         .attr('xlink:href', 'img/map.svg')
