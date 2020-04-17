@@ -132,8 +132,7 @@ function init() {
                       */
 
                     //Testing, display all values
-                    document.getElementById("lanInfo").innerHTML +=
-                        "<p>Län: " + data.key[0] + " Datum: " + data.key[2] + " Värde: " + data.values + "</p>";
+                    document.getElementById("lanInfo").innerHTML += "<p>Län: " + data.key[0] + " Datum: " + data.key[2] + " Värde: " + data.values + "</p>";
 
                     // put all the values in an array
                     dList.push({ lan: data.key[0], ar: data.key[2], dValue: data.values[0] });

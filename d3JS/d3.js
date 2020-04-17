@@ -1,45 +1,41 @@
 function d3js() {
     console.log("Starting D3 module");
     const mmValue = [];
-    var maxRange = Math.max.apply(Math, mmValue);
-    var minRange = Math.min.apply(Math, mmValue);
-
-
 
 
     //Select container
-    var sampleSVG = d3.select("#svg-container")
+    var mapContainer = d3.select("#svg-container")
         .append("svg")
         .attr("width", 900)
         .attr("height", 700)
         .call(d3.behavior.zoom().on("zoom", function() {
-            sampleSVG.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+            mapContainer.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
         }))
         .append("g")
 
     //Draw svg map of sweden
-    var myimage = sampleSVG.append('image')
+    var myimage = mapContainer.append('image')
         .attr('xlink:href', 'img/map.svg')
         .attr('width', 900)
         .attr('height', 600);
 
     //Get the smallest and biggest values
-    for (var j = 0; j < dList.length; j++) {
-        mmValue.push(dList[j].dValue);
+    for (var i = 0; i < dList.length; i++) {
+        mmValue.push(dList[i].dValue);
     }
 
-
+    var minRange = Math.min.apply(Math, mmValue);
+    var maxRange = Math.max.apply(Math, mmValue);
 
     // Select color of heatmap dot based on value
     for (var i = 0; i < dList.length; i++) {
         // console.log(i + "value: " + dList[i].dValue)
 
-
         //set the scale for each value
         var unscaled = mmValue[i];
-        var scaled = scaleBetween(unscaled, 5, 30, minRange, maxRange);
-        console.log(scaled.toFixed(2));
+        var scaled = scalenum(unscaled, 5, 30, minRange, maxRange);
 
+        // console.log(scaled.toFixed(2));
 
         if (dList[i].dValue >= 1000) {
             dColor = "#630601";
@@ -117,7 +113,7 @@ function d3js() {
 
     }
     // Function to scale values for the dots
-    function scaleBetween(unscaledNum, minAllowed, maxAllowed, min, max) {
+    function scalenum(unscaledNum, minAllowed, maxAllowed, min, max) {
         return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
     }
 
@@ -125,7 +121,7 @@ function d3js() {
     function drawCircle(x, y, size, tip, dotColor) {
 
         // console.log('Drawing circle at', x, y, size, dotColor);
-        sampleSVG.append("circle")
+        mapContainer.append("circle")
 
         .style("stroke", "gray")
             .style("fill", dotColor)
