@@ -33,3 +33,13 @@ h2 {
     height: 900px;
     width: 900px;
 }
+
+a {
+    text-decoration: none;
+    color: yellow;
+    transition: all .2s ease-in-out;
+}
+
+a:hover {
+    color: pink;
+}
