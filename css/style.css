@@ -14,6 +14,10 @@ h1 {
     cursor: pointer;
 }
 
+#logo h2:hover {
+    color: pink;
+}
+
 h1,
 h2 {
     color: yellow;

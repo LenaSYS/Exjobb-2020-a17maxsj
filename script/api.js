@@ -115,7 +115,7 @@ function init() {
 
     $.ajax({
         // url: "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/BefolkningMedelAlder",
-        url: "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/TK/TK1001/TK1001A/PersBilarDrivMedel",
+        url: "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/TK/TK1001/TK1001A/PersBilarDrivMedel",
 
         type: "POST",
         data: JSON.stringify(jsonObj),

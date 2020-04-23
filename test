@@ -1,125 +1,113 @@
- /*
-    var can = document.getElementById('artifactCanvas');
-var ctx = can.getContext('2d');
+function threejs() {
+    console.log("Starting Three module")
+    const mmValue = [];
 
-    var img = new Image();
-    img.onload = function() {
-        ctx.drawImage(img, 0, 0);
+    //Get the smallest and biggest values
+    for (var i = 0; i < dList.length; i++) {
+        mmValue.push(dList[i].dValue);
     }
-    img.src = "img/map.svg";
-*/
-/*
-    this.renderer = new THREE.WebGLRenderer({ canvas: artifactCanvas, alpha: true });
+
+    var minRange = Math.min.apply(Math, mmValue);
+    var maxRange = Math.max.apply(Math, mmValue);
 
 
-
-    ////////////////// CAMERA
-    this.camera = new THREE.PerspectiveCamera(
-        35,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        3000
-    );
-    this.camera.position.set(0, 0, 200);
-
-    ////////////////// SCENE
-    this.scene = new THREE.Scene();
-
-    const scene = this.scene;
-    scene.background = new THREE.Color(0xff0000);
-
-
-    ////////////////// LOADER
-    fetch('https://openclipart.org/download/219211/options_icon.svg')
-        .then(response => response.text())
-        .then(svg => {
-
-            var node = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(svg, 'image/svg+xml');
-
-            node.appendChild(doc.documentElement);
-
-            var object = new THREE.SVGObject(node);
-            scene.add(object);
-
-        });
-
-*/
-    /*
-    THREE.LegacySVGLoader = function(manager) {
-  
-      this.manager = (manager !== undefined) ? manager : THREE.DefaultLoadingManager;
-  
-    };
-  
-    THREE.LegacySVGLoader.prototype = {
-  
-      constructor: THREE.LegacySVGLoader,
-  
-      load: function(url, onLoad, onProgress, onError) {
-  
-        var scope = this;
-  
-        var parser = new DOMParser();
-  
-        var loader = new THREE.FileLoader(scope.manager);
-        loader.load(url, function(svgString) {
-  
-          var doc = parser.parseFromString(svgString, 'image/svg+xml'); // application/xml
-  
-          onLoad(doc.documentElement);
-  
-        }, onProgress, onError);
-  
-      }
-  
-    };
-  
-    var svgManager = new THREE.LegacySVGLoader();
-    var url = 'https://cors-anywhere.herokuapp.com/https://wwwlab.iit.his.se/a17maxsj/map.svg';
-  
-    function svg_loading_done_callback(doc) {
-      init(new THREE.SVGObject(doc));
-      render();
-    };
-  
-    svgManager.load(url,
-      svg_loading_done_callback,
-      function() {
-        console.log("Loading SVG...");
-      },
-      function() {
-        console.log("Error loading SVG!");
-      });
-  
     var camera, scene, renderer;
-  
-    function init(svgObject) {
-      camera = new THREE.PerspectiveCamera(50, 500 / 400, 0.1, 1000);
-      camera.position.z = 100;
-  
-      
-      svgObject.position.x = Math.random() * innerWidth;
-      svgObject.position.y = 200;
-      svgObject.position.z = Math.random() * 10000 - 5000;
-      svgObject.scale.x = svgObject.scale.y = svgObject.scale.z = 0.01;
-  
-      scene = new THREE.Scene();
-      scene.add(svgObject);
-  
-      
-  
-      renderer = new THREE.SVGRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight - 5);
-  
+    camera = new THREE.PerspectiveCamera(60, 900 / 700, 0.1, 1000);
+    camera.position.z = 1000;
+
+
+
+    scene = new THREE.Scene();
+
+
+
+    var renderer = new THREE.WebGLRenderer({ canvas: artifactCanvas, alpha: true });
+    renderer.setSize(900, 700);
+
     document.body.appendChild(renderer.domElement);
+
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enablePan = true;
+    controls.enableRotate = false;
+
+    var zoomIn = document.getElementById('zoom-in');
+    var zoomOut = document.getElementById('zoom-out');
+
+
+    for (var i = 0; i < dList.length; i++) {
+        console.log(dList[i].lan);
+        //Draw dot in the right place depending on the county
+        if (dList[i].lan === "01") {
+            drawCircle(460, -430, 10, 0xff0000);
+        } else if (dList[i].lan === "03") {
+            drawCircle(450, -410, 10);
+        } else if (dList[i].lan === "04") {
+            drawCircle(435, -445, 10);
+        } else if (dList[i].lan === "05") {
+            drawCircle(420, -470, 10);
+        } else if (dList[i].lan === "06") {
+            drawCircle(400, -500, 10);
+        } else if (dList[i].lan === "07") {
+            drawCircle(405, -525, 10);
+        } else if (dList[i].lan === "08") {
+            drawCircle(425, -510, 10);
+        } else if (dList[i].lan === "09") {
+            drawCircle(465, -505, 10);
+        } else if (dList[i].lan === "10") {
+            drawCircle(418, -542, 10);
+        } else if (dList[i].lan === "12") {
+            drawCircle(390, -550, 10);
+        } else if (dList[i].lan === "13") {
+            drawCircle(380, -525, 10);
+        } else if (dList[i].lan === "14") {
+            drawCircle(380, -475, 10);
+        } else if (dList[i].lan === "17") {
+            drawCircle(380, -420, 10);
+        } else if (dList[i].lan === "18") {
+            drawCircle(410, -430, 10);
+        } else if (dList[i].lan === "19") {
+            drawCircle(430, -420, 10);
+        } else if (dList[i].lan === "20") {
+            drawCircle(405, -380, 10);
+        } else if (dList[i].lan === "21") {
+            drawCircle(435, -370, 10);
+        } else if (dList[i].lan === "22") {
+            drawCircle(449, -300, 10);
+        } else if (dList[i].lan === "23") {
+            drawCircle(400, -300, 10);
+        } else if (dList[i].lan === "24") {
+            drawCircle(450, -220, 10);
+        } else if (dList[i].lan === "25") {
+            drawCircle(480, -120, 10);
+        } else {
+            console.log("fail");
+            break;
+        }
+
+
+
+
     }
-  
-  
-  
-    function render() {
-      console.log("Rendering SVG...");
-      renderer.render(scene, camera);
+
+    // Function that draws the circles
+    function drawCircle(x, y, size, color) {
+
+
+        var geometry = new THREE.CircleGeometry(size, 32);
+        var material = new THREE.MeshBasicMaterial({ color: color });
+        var circle = new THREE.Mesh(geometry, material);
+        circle.position.set(x, y, 1);
+
+        scene.add(circle);
     }
-    */
+
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+
+}

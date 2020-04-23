@@ -1,4 +1,6 @@
 function d3js() {
+    var t0 = performance.now()
+
     console.log("Starting D3 module");
     const mmValue = [];
 
@@ -112,6 +114,9 @@ function d3js() {
 
 
     }
+
+
+
     // Function to scale values for the dots
     function scalenum(unscaledNum, minAllowed, maxAllowed, min, max) {
         return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
@@ -142,5 +147,6 @@ function d3js() {
             .style("background-color", "black")
             .text(tip);
     }
-
+    var t1 = performance.now()
+    console.log("Call to d3 took " + (t1 - t0) + " milliseconds.")
 }
