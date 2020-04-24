@@ -148,5 +148,10 @@ function d3js() {
             .text(tip);
     }
     var t1 = performance.now()
+    var result = t1 - t0;
     console.log("Call to d3 took " + (t1 - t0) + " milliseconds.")
+
+    localStorage.setItem("perf", result.toFixed(4));
+
+
 }

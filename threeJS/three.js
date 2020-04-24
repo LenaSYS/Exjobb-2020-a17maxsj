@@ -125,9 +125,6 @@ function threejs() {
         circle.position.y = y;
         material.opacity = 0.7;
         scene.add(circle);
-
-
-
     }
 
 
@@ -139,5 +136,9 @@ function threejs() {
     animate();
 
     var t1 = performance.now()
+    var result = t1 - t0;
+
     console.log("Call to three took " + (t1 - t0) + " milliseconds.")
+    localStorage.setItem("perf", result.toFixed(4));
+
 }
